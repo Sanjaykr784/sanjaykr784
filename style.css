@@ -303,6 +303,28 @@ nav a.active {
   flex-direction: column;
   align-items: center;
 }
+.skills-container, .projects-grid {
+  flex-direction: column;
+  align-items: center;
+}
+
+.skills-container, .projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.project-card, .skill {
+  width: min(90%, 350px);
+}
+@media (max-width: 500px) {
+  section {
+    padding: 20px 10px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
 
 /* ==========================================================================
    🔻 FOOTER
