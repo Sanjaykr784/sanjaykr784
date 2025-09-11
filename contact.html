@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sanjay Kumar Mahato | Contact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-link" data-page="home">Home</a>
+    <a href="about.html" class="nav-link" data-page="about">About</a>
+    <a href="skills.html" class="nav-link" data-page="skills">Skills</a>
+    <a href="projects.html" class="nav-link" data-page="projects">Projects</a>
+    <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
+  </nav>
+
+  <button id="themeToggle" aria-label="Toggle theme">Toggle Theme</button>
+
+  <section id="contact" data-aos="fade-up">
+    <h2>Contact Me</h2>
+    <form action="https://formspree.io/f/xrbajvbg" method="POST">
+  <input type="text" name="name" placeholder="Your Name" required />
+  <input type="email" name="email" placeholder="Your Email" required />
+  <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+  <button type="submit">Send Message</button>
+   </form>
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    // Theme toggle logic
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      if(document.body.classList.contains('light-theme')) {
+        themeToggle.textContent = 'Dark Theme';
+      } else {
+        themeToggle.textContent = 'Light Theme';
+      }
+    });
+
+    // Highlight current nav link
+    const currentPage = 'contact';
+    document.querySelectorAll('nav a').forEach(link => {
+      if(link.dataset.page === currentPage) link.classList.add('active');
+    });
+  </script>
+<footer class="site-footer">
+  <p>&copy; 2025 Sanjay Kumar Mahato | Built with ❤️ | <a href="mailto:nepindia.sktech@gmail.com">Contact Me</a></p>
+</footer>
+</body>
+</html>
