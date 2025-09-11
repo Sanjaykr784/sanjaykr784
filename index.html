@@ -1,31 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanjay Kumar Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sanjay Kumar Mahato | Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <h1>Sanjay Kumar Mahato</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
+  <nav>
+    <a href="index.html" class="nav-link" data-page="home">Home</a>
+    <a href="about.html" class="nav-link" data-page="about">About</a>
+    <a href="skills.html" class="nav-link" data-page="skills">Skills</a>
+    <a href="projects.html" class="nav-link" data-page="projects">Projects</a>
+    <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
+  </nav>
 
-    <main>
-        <section>
-            <h2>Welcome to my portfolio!</h2>
-            <p>Hi, I’m Sanjay, a network and web enthusiast. Explore my work below.</p>
-        </section>
-    </main>
+  <button id="themeToggle" aria-label="Toggle theme">Toggle Theme</button>
 
-    <footer>
-        <p>&copy; 2025 Sanjay Kumar Mahato</p>
-    </footer>
+  <section id="hero" class="hero" data-aos="fade-down">
+    <h1>Sanjay Kumar Mahato</h1>
+    <div class="typed-text" id="typed"></div>
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    // Typed text animation on home page only
+    const typedTexts = [
+      "Data Center Technician",
+      "VMware vSphere Specialist",
+      "Linux & Windows VMs",
+      "Monitoring Tools Expert",
+    ];
+
+    const typedElement = document.getElementById("typed");
+    let index = 0;
+    let charIndex = 0;
+    let typing = true;
+    let delayAfterTyping = 2000;
+
+    function type() {
+      if (typing) {
+        if (charIndex < typedTexts[index].length) {
+          typedElement.textContent += typedTexts[index][charIndex];
+          charIndex++;
+          setTimeout(type, 100);
+        } else {
+          typing = false;
+          setTimeout(type, delayAfterTyping);
+        }
+      } else {
+        if (charIndex > 0) {
+          typedElement.textContent = typedElement.textContent.slice(0, -1);
+          charIndex--;
+          setTimeout(type, 50);
+        } else {
+          typing = true;
+          index = (index + 1) % typedTexts.length;
+          setTimeout(type, 300);
+        }
+      }
+    }
+    type();
+
+    // Theme toggle logic
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      if(document.body.classList.contains('light-theme')) {
+        themeToggle.textContent = 'Dark Theme';
+      } else {
+        themeToggle.textContent = 'Light Theme';
+      }
+    });
+
+    // Highlight current nav link
+    const currentPage = 'home';
+    document.querySelectorAll('nav a').forEach(link => {
+      if(link.dataset.page === currentPage) link.classList.add('active');
+    });
+  </script>
+<footer class="site-footer">
+  <p>&copy; 2025 Sanjay Kumar Mahato | Built with ❤️ | <a href="mailto:nepindia.sktech@gmail.com">Contact Me</a></p>
+</footer>
 </body>
 </html>
