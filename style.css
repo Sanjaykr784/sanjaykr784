@@ -1,31 +1,363 @@
+/* ==========================================================================
+   ✨ GLOBAL STYLES
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  background: #0f0f0f;
+  color: #fff;
+  min-height: 100vh;
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+  scroll-behavior: smooth;
+}
+body.light-theme {
+  background: #f5f5f5;
+  color: #111;
+}
+a {
+  color: #00ffd5;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+a:hover {
+  color: #ff0057;
+}
+h1, h2, h3 {
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+p {
+  margin-bottom: 15px;
+  font-weight: 300;
+}
+section {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px;
 }
 
-header {
-    background-color: #1f2937;
-    color: white;
-    padding: 1rem;
+/* ==========================================================================
+   🌐 NAVBAR
+   ========================================================================== */
+nav {
+  background: #1c1c1c;
+  padding: 15px 30px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
-
 nav a {
-    color: white;
-    margin: 0 1rem;
-    text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+nav a:hover,
+nav a.active {
+  background: #00ffd5;
+  color: #000;
+  box-shadow: 0 0 8px #00ffd5;
 }
 
-main {
-    padding: 2rem;
+/* ==========================================================================
+   🏠 INDEX PAGE - HERO SECTION
+   ========================================================================== */
+.hero {
+  text-align: center;
+  padding: 100px 20px 50px;
+}
+.hero h1 {
+  font-size: 3rem;
+}
+.typed-text {
+  color: #00ffd5;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  height: 28px;
+  min-height: 28px;
 }
 
-footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: #1f2937;
-    color: white;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+/* ==========================================================================
+   👤 ABOUT PAGE
+   ========================================================================== */
+#about h2 {
+  text-align: center;
+  color: #00ffd5;
 }
+#about p,
+#about ul {
+  max-width: 700px;
+  margin: 15px auto;
+}
+#about ul {
+  padding-left: 40px;
+  list-style-type: disc;
+}
+
+/* ==========================================================================
+   🛠️ SKILLS SECTION
+   ========================================================================== */
+#skills {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+}
+.skill {
+  background: #1c1c1c;
+  border-radius: 15px;
+  padding: 20px;
+  width: 140px;
+  text-align: center;
+  box-shadow: 0 0 15px #00ffd5, 0 0 25px #ff0057;
+  transition: transform 0.3s ease;
+}
+.skill:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 30px #00ffd5, 0 0 40px #ff0057;
+}
+.skill img {
+  width: 50px;
+  margin-bottom: 10px;
+}
+.skill-name {
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   💼 PROJECTS PAGE
+   ========================================================================== */
+.projects-section {
+  padding: 40px 20px;
+  text-align: center;
+}
+.section-title {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #00ffd5;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.project-card {
+  background: #1c1c1c;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 255, 213, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 20px #00ffd5, 0 0 30px #ff0057;
+}
+.project-card h3 {
+  color: #ff0057;
+  margin-bottom: 10px;
+}
+.project-card p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+.project-card a {
+  display: inline-block;
+  margin-top: 15px;
+  color: #00ffd5;
+  font-weight: bold;
+}
+.project-card a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   📬 CONTACT PAGE
+   ========================================================================== */
+#contact {
+  text-align: center;
+  padding: 40px 20px;
+}
+#contact form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#contact input,
+#contact textarea {
+  padding: 12px 15px;
+  border-radius: 25px;
+  border: none;
+  background: #2c2c2c;
+  color: #fff;
+  font-size: 14px;
+}
+#contact input:focus,
+#contact textarea:focus {
+  box-shadow: 0 0 10px #00ffd5, 0 0 20px #ff0057;
+  border: 1px solid #00ffd5;
+}
+#contact button {
+  padding: 12px;
+  border-radius: 25px;
+  background: #00ffd5;
+  color: #000;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+#contact button:hover {
+  background: #00c2a7;
+  color: #fff;
+}
+
+/* ==========================================================================
+   🌓 THEME TOGGLE BUTTON
+   ========================================================================== */
+#themeToggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background: #00ffd5;
+  border: none;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00ffd5;
+  z-index: 10000;
+}
+#themeToggle:hover {
+  background: #00c2a7;
+}
+
+/* ==========================================================================
+   📱 RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 700px) {
+  nav {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  #skills, #projects {
+    flex-direction: column;
+    align-items: center;
+  }
+  .skill, .project-card {
+    width: 90%;
+  }
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+}
+
+/* ==========================================================================
+   🔻 FOOTER
+   ========================================================================== */
+.site-footer {
+  background: #1c1c1c;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 14px;
+  border-top: 1px solid #333;
+}
+.site-footer a {
+  color: #00ffd5;
+}
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+
+/* -------------------------------------------- */
+/* ⚙️ Light Theme Text Fixes - Global Styling    */
+/* -------------------------------------------- */
+
+/* Main text in light theme */
+body.light-theme {
+  color: #111;
+}
+
+/* Skill cards */
+.light-theme .skill-name,
+.light-theme .project-card h3,
+.light-theme .project-card p,
+.light-theme .project-card a {
+  color: #111 !important;
+}
+
+/* Footer in light theme */
+.light-theme .site-footer {
+  background: #f1f1f1;
+  color: #333;
+}
+.light-theme .site-footer a {
+  color: #00bfa6;
+}
+
+/* Navbar links */
+.light-theme nav a {
+  color: #111;
+}
+.light-theme nav a.active {
+  background: #00ffd5;
+  color: #000;
+}
+
+/* Button theme toggle */
+.light-theme #themeToggle {
+  background: #111;
+  color: #00ffd5;
+}
+.light-theme #themeToggle:hover {
+  background: #333;
+  color: #00ffd5;
+}
+
+/* Any other card-style content (for future additions) */
+.light-theme .skill,
+.light-theme .project-card {
+  background: #eaeaea;
+  color: #111;
+}
+/* -------------------------------------------- */
+/* 🌞 Navbar Fix for Light Theme                */
+/* -------------------------------------------- */
+
+.light-theme nav {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.light-theme nav a {
+  color: #111 !important;
+  background: transparent;
+}
+
+.light-theme nav a.active,
+.light-theme nav a:hover {
+  background: #00ffd5;
+  color: #000 !important;
+  box-shadow: 0 0 8px #00ffd5;
+}
+
